@@ -1,5 +1,3 @@
-// ASSIGNMENT 9 — HOTEL BOOKING SYSTEM
-
 let rooms = [
     {
         roomNumber: 101,
@@ -30,9 +28,7 @@ let rooms = [
         customer: null
     }
 ];
-
 const TAX_RATE = 15;
-
 function calculateNights(checkIn, checkOut) {
     const start = new Date(checkIn);
     const end = new Date(checkOut);
@@ -42,25 +38,19 @@ function calculateNights(checkIn, checkOut) {
 
     return nights;
 }
-
 function bookRoom(roomNumber, customer) {
     const room = rooms.find(room =>
         room.roomNumber === roomNumber
     );
-
     if (!room) return "Room not found.";
     if (room.isBooked) return "Room is already booked.";
-
     const nights = calculateNights(
         customer.checkIn,
         customer.checkOut
     );
-
     if (nights <= 0) return "Invalid check-in/check-out dates.";
-
     room.isBooked = true;
     room.customer = { ...customer };
-
     return {
         message: "Room booked successfully.",
         roomNumber: room.roomNumber,
