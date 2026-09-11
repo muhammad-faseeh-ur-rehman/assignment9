@@ -58,21 +58,17 @@ function bookRoom(roomNumber, customer) {
         bill: calculateBill(room)
     };
 }
-
 function calculateBill(room) {
     if (!room.isBooked || !room.customer) {
         return "Room is not booked.";
     }
-
     const nights = calculateNights(
         room.customer.checkIn,
         room.customer.checkOut
     );
-
     const roomCost = room.pricePerNight * nights;
     const tax = roomCost * (TAX_RATE / 100);
     const finalBill = roomCost + tax;
-
     return {
         nights,
         roomCost,
@@ -121,7 +117,6 @@ function searchRooms({ type, maxPrice }) {
     });
 }
 
-// TEST
 const customer = {
     name: "Ali",
     phone: "03000000000",
